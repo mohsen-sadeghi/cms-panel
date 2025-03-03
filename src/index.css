@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Homenaje&family=Lalezar&family=Montserrat:wght@100..900&family=Orbitron:wght@400..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Vazirmatn:wght@100..900&display=swap');@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base{
+}
+
+@layer components{
+  body{
+    @apply bg-[#e5e5e5] dark:bg-[#1e1e1e] font-vazir;
+  }
+
+  .main{
+    
+  }
+
+
+  .sidebar-links{
+    @apply flex items-center justify-between pr-4 pl-[18px];;
+  }
+
+  .sidebar-links.active{
+    @apply bg-neutral-50  dark:bg-neutral-800 mr-2 py-3 rounded-r-full;
+  }
+
+  .sidebar-links.active .sidebar-links__right-svg{
+    @apply stroke-rose-500  dark:stroke-neutral-50 
+  }
+
+  .sidebar-links.active .sidebar-links__text{
+    @apply text-rose-500  dark:text-neutral-50 
+  }
+
+  .sidebar-links.active .sidebar-links__left-svg{
+    @apply  fill-rose-500 dark:fill-neutral-50 
+  }
+
+  .sidebar-links__right-svg{
+    @apply stroke-rose-50  dark:stroke-neutral-800 w-[25px] h-[25px];
+  }
+  .sidebar-links__text{
+    @apply  text-xl cursor-pointer
+  }
+
+  .sidebar-links__left-svg{
+    @apply  w-[18px] h-[18px] fill-rose-50 dark:fill-neutral-800
+  }
+  
+  
+  /* handel toggle menu icon */
+  .toggle-menu{
+    @apply relative w-8 h-1 rounded-full bg-neutral-800 dark:bg-rose-50 transition-all;
+  }
+
+  .toggle-menu::before{
+    content: '';
+    @apply absolute top-2 w-8 h-1 rounded-full bg-neutral-800 dark:bg-rose-50 transition-all;
+  }
+
+  .toggle-menu::after{
+    content: '';
+    @apply absolute bottom-2 w-8 h-1 rounded-full bg-neutral-800 dark:bg-rose-50 transition-all;
+  } 
+
+  .toggle-menu.active{
+    @apply bg-transparent;
+  }
+
+  .toggle-menu.active::before{
+    @apply -rotate-45 top-0
+  }
+
+  .toggle-menu.active::after{
+    @apply rotate-45 bottom-0
+  }
+
+  /* handel toggle menu */
+  .sidebar{
+    @apply fixed -right-[298px] top-0 bottom-0 z-10 xl:static xl:mt-10 transition-all;
+  }
+
+  .sidebar.active{
+    @apply -right-[10px] ;
+  }
+
+  /* pagination */
+  .paginate{
+    @apply flex items-center justify-center w-10 h-10 border border-rose-500 rounded-lg text-neutral-950 dark:text-rose-50;
+  }
+  .paginate.active{
+    @apply text-rose-50 bg-rose-500 
+  }
+
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}

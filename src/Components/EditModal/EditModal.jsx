@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { CloseCircle } from "iconsax-react";
 
-export default function EditProduct({children , title , onClose , onSubmit }) {
+export default function EditModal({children , title , onClose , onSubmit }) {
   return ReactDOM.createPortal(
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center ">
       <div className=" bg-white dark:bg-neutral-800 py-5 px-8 rounded-2xl">

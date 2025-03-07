@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { alertBox } from "../../utils/utils";
-import EditProduct from "../EditProduct/EditProduct";
+import EditModal from "../EditModal/EditModal";
 import InfoModal from "../InfoModal/InfoModal";
-import { Edit, Trash, InfoCircle, CloudFog } from "iconsax-react";
+import { Edit, Trash, InfoCircle } from "iconsax-react";
 import { deleteModal } from "../../utils/utils";
 import Pagination from "../Pagination/Pagination";
 import { useParams } from "react-router-dom";
-
+import ActionIcons from "../ActionIcons/ActionIcons";
 
 export default function ProductsTable() {
   const [products, setProducts] = useState([]);
@@ -25,7 +25,7 @@ export default function ProductsTable() {
   const [coloringProduct, setColoringProduct] = useState();
   const [captionProduct, setCaptionProduct] = useState();
 
-  const {page} = useParams()
+  const { page } = useParams();
 
   useEffect(() => {
     getAllCourses();
@@ -77,12 +77,7 @@ export default function ProductsTable() {
           body: JSON.stringify(editProduct),
         }
       );
-
-      const responseData = await res.json();
-
-      console.log(responseData);
-      console.log(res.status);
-
+      
       if (!res.ok) throw new Error("There was a problem sending the request");
       alertBox("محصول با موفقیت تغییر کرد", "success");
       getAllCourses();
@@ -94,8 +89,29 @@ export default function ProductsTable() {
     setIsShowEditModal(false);
   };
 
-  const closeEditModal = () => setIsShowEditModal(false)
-  const closeInfoModal = () => setIsShowInfoModal(false)
+  const closeEditModal = () => setIsShowEditModal(false);
+  const closeInfoModal = () => setIsShowInfoModal(false);
+  const editProductClickHandler = (product) => {
+    setNameProduct(product.title);
+    setPriceProduct(product.price);
+    setCountProduct(product.count);
+    setAddressImageProduct(product.img);
+    setPopularityProduct(product.popularity);
+    setSaleProduct(product.sale);
+    setColoringProduct(product.colors);
+    setCaptionProduct(product.description);
+    setIsShowEditModal(true);
+    setMainProductID(product.id);
+  };
+  const deleteProductClickHandler = (product) => {
+    deleteModal("آیا از حذف محصول اطمینان دارید ؟", () => {
+      deleteProduct(product.id);
+    });
+  };
+  const InfoProductClickHandler = (product) => {
+    setMainProduct(product);
+    setIsShowInfoModal(true);
+  };
 
   return (
     <>
@@ -104,7 +120,7 @@ export default function ProductsTable() {
           <tbody className="flex flex-col gap-y-3">
             {products.map((product) => (
               <tr
-                className="flex items-center justify-around sm:justify-between flex-wrap sm:flex-nowrap gap-x-1 px-4 py-1 border border-neutral-300 rounded-2xl"
+                className="flex flex-col sm:flex-row items-center justify-around sm:justify-between flex-wrap sm:flex-nowrap gap-x-1 gap-y-1 sm:gap-y-0 px-4 py-1 border border-neutral-300 rounded-2xl"
                 key={product.id}
               >
                 <td>
@@ -125,42 +141,20 @@ export default function ProductsTable() {
                   <span className=" text-rose-500">{product.count}</span>
                 </td>
                 <td className="flex gap-x-2 mr-2 md:mr-16 lg:mr-40 xl:mr-60">
-                  <Edit
-                    className=" stroke-rose-500 w-4 h-4 sm:w-6 sm:h-6 cursor-pointer"
-                    onClick={() => {
-                      setNameProduct(product.title);
-                      setPriceProduct(product.price);
-                      setCountProduct(product.count);
-                      setAddressImageProduct(product.img);
-                      setPopularityProduct(product.popularity);
-                      setSaleProduct(product.sale);
-                      setColoringProduct(product.colors);
-                      setCaptionProduct(product.description);
-                      setIsShowEditModal(true);
-                      setMainProductID(product.id);
-                    }}
+                  <ActionIcons
+                    onEdit={() => editProductClickHandler(product)}
+                    onDelete={() => deleteProductClickHandler(product)}
+                    onInfo={() => InfoProductClickHandler(product)}
                   />
-                  <Trash
-                    className=" stroke-rose-500 w-4 h-4 sm:w-6 sm:h-6 cursor-pointer"
-                    onClick={() => {
-                      deleteModal("آیا از حذف محصول اطمینان دارید ؟", () => {
-                        deleteProduct(product.id);
-                      });
-                    }}
-                  />
-                  <InfoCircle className=" stroke-rose-500 w-4 h-4 sm:w-6 sm:h-6 cursor-pointer" onClick={()=>{
-                    setMainProduct(product)
-                    setIsShowInfoModal(true)
-                  }}/>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-      </div> 
+      </div>
 
       {isShowEditModal && (
-        <EditProduct
+        <EditModal
           title={"ویرایش محصول"}
           onClose={closeEditModal}
           onSubmit={submitEditModal}
@@ -247,7 +241,7 @@ export default function ProductsTable() {
               />
             </li>
           </ul>
-        </EditProduct>
+        </EditModal>
       )}
 
       {isShowInfoModal && (
@@ -271,7 +265,12 @@ export default function ProductsTable() {
         </InfoModal>
       )}
 
-      <Pagination perPage={7} fetchText={"http://localhost:3000/products"} url={"/products/"} activePage={page}/>
+      <Pagination
+        perPage={7}
+        fetchText={"http://localhost:3000/products"}
+        url={"/products/"}
+        activePage={page}
+      />
     </>
   );
 }

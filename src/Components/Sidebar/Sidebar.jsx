@@ -84,7 +84,7 @@ export default function Sidebar() {
                   variant="Bold"
                 />
               </NavLink>
-              <NavLink to={"/users"} className="sidebar-links">
+              <NavLink to={"/users/1"} className="sidebar-links">
                 <div className="flex items-center gap-x-[7px]">
                   <Profile2User
                     size="24"

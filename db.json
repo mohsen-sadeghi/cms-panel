@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "title": "هندزفری بلوتوثی درجه 1",
+      "title": "هندزفری بلوتوثی درجه 2",
       "price": 139000,
       "count": 90,
       "img": "/img/head.jpeg",
@@ -178,8 +178,7 @@
   ],
   "users": [
     {
-      "id": "1",
-      "firsname": "علی",
+      "firstname": "علی",
       "lastname": "احمدی",
       "username": "alireza_ahmdi19",
       "password": "19901432",
@@ -188,11 +187,11 @@
       "email": "alireza@gmail.com",
       "address": "تهران - خیابان فلان - کوچه فلان",
       "score": 98,
-      "buy": 9000000
+      "id": "1"
     },
     {
       "id": "2",
-      "firsname": "حسین",
+      "firstname": "حسین",
       "lastname": "محمدی",
       "username": "hosyn_mmdi",
       "password": "ho3ein_12",
@@ -205,7 +204,7 @@
     },
     {
       "id": "3",
-      "firsname": "علی",
+      "firstname": "علی",
       "lastname": "حسینی",
       "username": "ali_9001",
       "password": "ali190012",
@@ -213,6 +212,19 @@
       "city": "شیراز",
       "email": "ali@gmail.com",
       "address": "شیراز - خیابان فلان - کوچه فلان",
+      "score": 28,
+      "buy": 8541000
+    },
+    {
+      "id": "4",
+      "firstname": "یگانه",
+      "lastname": "احمدی",
+      "username": "yegane",
+      "password": "yegin231",
+      "phone": 9943437617,
+      "city": "مشهد",
+      "email": "yegane@gmail.com",
+      "address": "مشهد - خیابان فلان - کوچه فلان",
       "score": 28,
       "buy": 8541000
     }

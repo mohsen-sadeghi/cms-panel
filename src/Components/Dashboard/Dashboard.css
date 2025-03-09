@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  font-family: 'Vazirmatn', sans-serif;
+  direction: rtl;
+}
+
+.sidebar {
+  width: 280px;
+  background-color: #e75480;
+  color: white;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.panel-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.admin-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+}
+
+.admin-profile img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.admin-info p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.admin-info span {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 0.5rem;
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+.menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.logout-button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-top: auto;
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+}
+
+.header-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+  color: #e75480;
+}
+
+.stat-info h3 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.stat-info p {
+  margin: 0.5rem 0 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.chart-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.chart-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.view-all {
+  background: none;
+  border: none;
+  color: #e75480;
+  cursor: pointer;
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+.chart {
+  height: 300px;
+  /* Chart styling will be handled by the chart component */
+}
+
+.highlights-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.highlight-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.highlight-card h3 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  color: #666;
+}
+
+.highlight-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.highlight-content img {
+  width: 60px;
+  height: 60px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.highlight-content h4 {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.highlight-content p {
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  color: #666;
+} 

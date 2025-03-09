@@ -112,7 +112,6 @@ export default function Users() {
     }
   };
 
-
   return (
     <>
       <section className="users text-neutral-950 dark:text-rose-50">
@@ -179,7 +178,7 @@ export default function Users() {
           </table>
         </InfoModal>
       )}
-
+      
       {isShowEditModal && (
         <EditModal
           title={"ویرایش کاربر"}

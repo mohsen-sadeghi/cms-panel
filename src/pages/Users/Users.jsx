@@ -129,7 +129,7 @@ export default function Users() {
                     alt=""
                     className="w-14 md:w-[72px] h-14 md:h-[72px] bg-center bg-cover rounded-2xl"
                   />
-                  <div className="flex flex-col sm:flex-row gap-1 sm:gap-4">
+                  <div className="flex flex-col sm:flex-row gap-y-1 sm:gap-4">
                     <span>{comment.firstname}</span>
                     <span>{comment.email}</span>
                     <span>{comment.phone}</span>

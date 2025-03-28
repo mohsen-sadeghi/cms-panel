@@ -13,7 +13,6 @@ export default function Pagination({perPage , fetchText , url , activePage}) {
       const res = await fetch(`${fetchText}`)
       const data = await res.json()
       if (!res.ok) throw new Error("There was a problem sending the request");
-      console.log(Math.ceil(data.length / perPage));
       setPaginateNumber(Math.ceil(data.length / perPage))
     }catch(error){
       console.log("Error" , error);

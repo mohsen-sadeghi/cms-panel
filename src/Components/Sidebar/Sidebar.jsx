@@ -101,7 +101,7 @@ export default function Sidebar() {
                   variant="Bold"
                 />
               </NavLink>
-              <NavLink to={"/Orders"} className="sidebar-links">
+              <NavLink to={"/Orders/1"} className="sidebar-links">
                 <div className="flex items-center gap-x-[7px]">
                   <TruckFast size="24" className=" sidebar-links__right-svg" />
                   <span className="sidebar-links__text">

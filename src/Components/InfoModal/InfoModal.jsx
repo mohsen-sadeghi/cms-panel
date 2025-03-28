@@ -16,8 +16,6 @@ export default function InfoModal({children , onClose , title}) {
           />
         </div>
         {children}
-
-
       </div>
     </div>,
 

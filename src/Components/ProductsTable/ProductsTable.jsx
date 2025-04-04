@@ -1,29 +1,51 @@
 import React, { useEffect, useState } from "react";
-import { alertBox } from "../../utils/utils";
 import EditModal from "../EditModal/EditModal";
 import InfoModal from "../InfoModal/InfoModal";
-import { Edit, Trash, InfoCircle } from "iconsax-react";
-import { deleteModal } from "../../utils/utils";
 import Pagination from "../Pagination/Pagination";
-import { useParams } from "react-router-dom";
 import ActionIcons from "../ActionIcons/ActionIcons";
+import { alertBox } from "../../utils/utils";
+import { deleteModal } from "../../utils/utils";
+import { useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+const schema = z.object({
+  nameProduct: z
+    .string()
+    .min(1, "پر کردن این فیلد الزامی است")
+    .min(3, "حداقل باید 3 کاراکتر باشد"),
+  priceProduct: z
+    .number()
+    .min(1, "پر کردن این فیلد الزامی است")
+    .min(3, "حداقل باید 3 کاراکتر باشد"),
+  countProduct: z.number().min(1, "پر کردن این فیلد الزامی است"),
+  addressImageProduct: z.string().min(1, "پر کردن این فیلد الزامی است"),
+  popularityProduct: z.number().min(1, "پر کردن این فیلد الزامی است"),
+  saleProduct: z.number().min(1, "پر کردن این فیلد الزامی است"),
+  coloringProduct: z.number().min(1, "پر کردن این فیلد الزامی است"),
+  captionProduct: z
+    .string()
+    .min(1, "پر کردن این فیلد الزامی است")
+    .min(3, "حداقل باید 3 کاراکتر باشد"),
+});
 
 export default function ProductsTable() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
+
   const [products, setProducts] = useState([]);
   const [mainProductID, setMainProductID] = useState(null);
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const [isShowInfoModal, setIsShowInfoModal] = useState(false);
 
   const [mainProduct, setMainProduct] = useState();
-
-  const [nameProduct, setNameProduct] = useState();
-  const [priceProduct, setPriceProduct] = useState();
-  const [countProduct, setCountProduct] = useState();
-  const [addressImageProduct, setAddressImageProduct] = useState();
-  const [popularityProduct, setPopularityProduct] = useState();
-  const [saleProduct, setSaleProduct] = useState();
-  const [coloringProduct, setColoringProduct] = useState();
-  const [captionProduct, setCaptionProduct] = useState();
 
   const { page } = useParams();
 
@@ -54,17 +76,20 @@ export default function ProductsTable() {
     }
   };
 
-  const submitEditModal = async () => {
+  const submitEditModal = async (data) => {
+    console.log(errors);
     const editProduct = {
-      title: nameProduct,
-      price: priceProduct,
-      count: countProduct,
-      img: addressImageProduct,
-      popularity: popularityProduct,
-      sale: saleProduct,
-      colors: coloringProduct,
-      description: captionProduct,
+      title: data.nameProduct,
+      price: data.priceProduct,
+      count: data.countProduct,
+      img: data.addressImageProduct,
+      popularity: data.popularityProduct,
+      sale: data.saleProduct,
+      colors: data.coloringProduct,
+      description: data.captionProduct,
     };
+
+    console.log(editProduct);
 
     try {
       const res = await fetch(
@@ -77,7 +102,7 @@ export default function ProductsTable() {
           body: JSON.stringify(editProduct),
         }
       );
-      
+
       if (!res.ok) throw new Error("There was a problem sending the request");
       alertBox("محصول با موفقیت تغییر کرد", "success");
       getAllCourses();
@@ -92,14 +117,16 @@ export default function ProductsTable() {
   const closeEditModal = () => setIsShowEditModal(false);
   const closeInfoModal = () => setIsShowInfoModal(false);
   const editProductClickHandler = (product) => {
-    setNameProduct(product.title);
-    setPriceProduct(product.price);
-    setCountProduct(product.count);
-    setAddressImageProduct(product.img);
-    setPopularityProduct(product.popularity);
-    setSaleProduct(product.sale);
-    setColoringProduct(product.colors);
-    setCaptionProduct(product.description);
+    reset({
+      nameProduct: product.title,
+      priceProduct: product.price,
+      countProduct: product.count,
+      addressImageProduct: product.img,
+      popularityProduct: product.popularity,
+      saleProduct: product.sale,
+      coloringProduct: product.colors,
+      captionProduct: product.description,
+    });
     setIsShowEditModal(true);
     setMainProductID(product.id);
   };
@@ -157,88 +184,94 @@ export default function ProductsTable() {
         <EditModal
           title={"ویرایش محصول"}
           onClose={closeEditModal}
-          onSubmit={submitEditModal}
+          onSubmit={handleSubmit(submitEditModal)}
         >
           <ul className="flex flex-col gap-2 mt-3 text-neutral-800 dark:text-rose-50">
             <li className="flex flex-col gap-1">
               <label htmlFor="">نام محصول :</label>
               <input
-                value={nameProduct}
-                onChange={(e) => setNameProduct(e.target.value)}
+                {...register("nameProduct")}
                 type="text"
                 placeholder="نام "
                 className=" outline-none border border-neutral-200 rounded-lg py-1 px-3 text-rose-300 dark:bg-neutral-800"
               />
+              {errors?.nameProduct && <p>{errors.nameProduct.message}</p>}
             </li>
             <li className="flex flex-col gap-1">
               <label htmlFor="">قیمت محصول :</label>
               <input
-                value={priceProduct}
-                onChange={(e) => setPriceProduct(e.target.value)}
-                type="text"
+                {...register("priceProduct" , { valueAsNumber: true })}
+                type="number"
                 placeholder="قیمت "
                 className=" outline-none border border-neutral-200 rounded-lg py-1 px-3 text-rose-300 dark:bg-neutral-800"
               />
+              {errors?.priceProduct && <p>{errors.priceProduct.message}</p>}
             </li>
             <li className="flex flex-col gap-1">
               <label htmlFor="">موجودی محصول :</label>
               <input
-                value={countProduct}
-                onChange={(e) => setCountProduct(e.target.value)}
-                type="text"
+                {...register("countProduct", { valueAsNumber: true })}
+                type="number"
                 placeholder="موجودی "
                 className=" outline-none border border-neutral-200 rounded-lg py-1 px-3 text-rose-300 dark:bg-neutral-800"
               />
+              {errors?.countProduct && <p>{errors.countProduct.message}</p>}
             </li>
             <li className="flex flex-col gap-1">
               <label htmlFor="">آدرس عکس محصول :</label>
               <input
-                value={addressImageProduct}
-                onChange={(e) => setAddressImageProduct(e.target.value)}
+                {...register("addressImageProduct")}
                 type="text"
                 placeholder="آدرس عکس "
                 className=" outline-none border border-neutral-200 rounded-lg py-1 px-3 text-rose-300 dark:bg-neutral-800"
               />
+              {errors?.addressImageProduct && (
+                <p>{errors.addressImageProduct.message}</p>
+              )}
             </li>
             <li className="flex flex-col gap-1">
               <label htmlFor=""> محبوبیت محصول :</label>
               <input
-                value={popularityProduct}
-                onChange={(e) => setPopularityProduct(e.target.value)}
-                type="text"
+                {...register("popularityProduct" , {valueAsNumber : true})}
+                type="number"
                 placeholder=" محبوبیت "
                 className=" outline-none border border-neutral-200 rounded-lg py-1 px-3 text-rose-300 dark:bg-neutral-800"
               />
+              {errors?.popularityProduct && (
+                <p>{errors.popularityProduct.message}</p>
+              )}
             </li>
             <li className="flex flex-col gap-1">
               <label htmlFor=""> میزان فروش محصول :</label>
               <input
-                value={saleProduct}
-                onChange={(e) => setSaleProduct(e.target.value)}
-                type="text"
+                {...register("saleProduct" , { valueAsNumber: true })}
+                type="number"
                 placeholder=" میزان فروش "
                 className=" outline-none border border-neutral-200 rounded-lg py-1 px-3 text-rose-300 dark:bg-neutral-800"
               />
+              {errors?.saleProduct && <p>{errors.saleProduct.message}</p>}
             </li>
             <li className="flex flex-col gap-1">
               <label htmlFor="">رنگبندی محصول :</label>
               <input
-                value={coloringProduct}
-                onChange={(e) => setColoringProduct(e.target.value)}
-                type="text"
+                {...register("coloringProduct", { valueAsNumber: true })}
+                type="number"
                 placeholder="رنگبندی محصول"
                 className=" outline-none border border-neutral-200 rounded-lg py-1 px-3 text-rose-300 dark:bg-neutral-800"
               />
+              {errors?.coloringProduct && (
+                <p>{errors.coloringProduct.message}</p>
+              )}
             </li>
             <li className="flex flex-col gap-1">
               <label htmlFor="">توضیحات محصول :</label>
               <textarea
-                value={captionProduct}
-                onChange={(e) => setCaptionProduct(e.target.value)}
+                {...register("captionProduct")}
                 type="text"
                 placeholder="توضیحات محصول"
                 className=" outline-none border border-neutral-200 rounded-lg py-1 px-3 text-rose-300 dark:bg-neutral-800"
               />
+              {errors?.captionProduct && <p>{errors.captionProduct.message}</p>}
             </li>
           </ul>
         </EditModal>

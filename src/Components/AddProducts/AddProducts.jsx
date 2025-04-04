@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { alertBox } from "../../utils/utils";
+import { useForm, SubmitHandler } from "react-hook-form"
+
 
 export default function AddProducts() {
   const [nameProduct, setNameProduct] = useState("");
@@ -9,6 +11,7 @@ export default function AddProducts() {
   const [popularityProduct, setPopularityProduct] = useState("");
   const [saleProduct, setSaleProduct] = useState("");
   const [colorProduct, setColorProduct] = useState("");
+
 
   const addProductClickHandler = async () => {
     if (

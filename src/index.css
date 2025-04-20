@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Homenaje&family=Lalezar&family=Montserrat:wght@100..900&family=Orbitron:wght@400..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Vazirmatn:wght@100..900&display=swap');@tailwind base;
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Homenaje&family=Lalezar&family=Montserrat:wght@100..900&family=Orbitron:wght@400..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Vazirmatn:wght@100..900&display=swap');
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -17,7 +18,7 @@
 
 
   .sidebar-links{
-    @apply flex items-center justify-between pr-4 pl-[18px];;
+    @apply flex items-center justify-between pr-4 pl-[18px];
   }
 
   .sidebar-links.active{
@@ -25,7 +26,7 @@
   }
 
   .sidebar-links.active .sidebar-links__right-svg{
-    @apply stroke-rose-500  dark:stroke-neutral-50 
+    @apply  text-rose-500  dark:stroke-neutral-50 
   }
 
   .sidebar-links.active .sidebar-links__text{
@@ -33,7 +34,7 @@
   }
 
   .sidebar-links.active .sidebar-links__left-svg{
-    @apply  fill-rose-500 dark:fill-neutral-50 
+    @apply  text-rose-500 dark:fill-neutral-50 
   }
 
   .sidebar-links__right-svg{

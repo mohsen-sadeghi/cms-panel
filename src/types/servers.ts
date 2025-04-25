@@ -17,3 +17,14 @@ export interface IProduct {
   description: string
   id: string
 }
+
+export interface IProductForm {
+  nameProduct: string;
+  priceProduct: number;
+  countProduct: number;
+  addressImageProduct: string;
+  popularityProduct: number;
+  saleProduct: number;
+  coloringProduct: number;
+  captionProduct: string;
+}

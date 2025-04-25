@@ -2,18 +2,20 @@ import React, { useEffect, useState } from "react";
 import Product from "../Product/Product";
 import { getAllProducts } from "../../services/api";
 import { IProduct } from "../../types/servers";
-
+import { useCmsContext } from "../../context/CmsContext";
+import Pagination from "../Pagination/Pagination";
+import { useParams } from "react-router";
 
 function ProductBox() {
-    const [products , setProducts] = useState<IProduct[]>([])
+  const [products, setProducts] = useState<IProduct[]>([]);
+  const { refreshData } = useCmsContext();
+  const { page } = useParams();
 
-
-    useEffect(() =>{
-        getAllProducts().then(res => {
-            setProducts(res)
-        })
-    } , [])
-
+  useEffect(() => {
+    getAllProducts(page).then((res) => {
+      setProducts(res.data);
+    });
+  }, [refreshData, page]);
 
   return (
     <>
@@ -21,11 +23,17 @@ function ProductBox() {
         <table className="w-full">
           <tbody className="flex flex-col gap-y-3">
             {products.map((product) => (
-                <Product {...product} key={product.id}/>
+              <Product {...product} key={product.id} />
             ))}
           </tbody>
         </table>
       </div>
+
+      <Pagination
+        fetchText="http://localhost:3000/products"
+        perPage={7}
+        url={"/products/"}
+      />
     </>
   );
 }

@@ -52,7 +52,6 @@ function Product(props: IProduct) {
       description: data.captionProduct,
     };
 
-    console.log(selectedItem?.id);
 
     editProductHandle(selectedItem?.id , editProduct).then( data => {
       closeEditModal()

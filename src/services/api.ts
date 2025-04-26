@@ -34,3 +34,9 @@ export const editProductHandle = async (id : string , product : IProductForm )=>
     const {data} = await client.put(`products/${id}` , product)
     return data
 }
+
+export const addProduct = async (newProduct)=> {
+    console.log(newProduct);
+    const {data} = await client.post("products" , newProduct)
+    return data
+}

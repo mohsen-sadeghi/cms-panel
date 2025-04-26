@@ -7,15 +7,15 @@ export interface Chart {
 }
 
 export interface IProduct {
-  title: string
-  price: number
-  count: number
-  img: string
-  popularity: number
-  sale: number
-  colors: number
-  description: string
-  id: string
+  title: string;
+  price: number;
+  count: number;
+  img: string;
+  popularity: number;
+  sale: number;
+  colors: number;
+  description: string;
+  id: string;
 }
 
 export interface IProductForm {
@@ -27,4 +27,15 @@ export interface IProductForm {
   saleProduct: number;
   coloringProduct: number;
   captionProduct: string;
+}
+
+export interface IAddProductForm {
+  nameProduct: string;
+  priceProduct: number;
+  countProduct: number;
+  imageProduct: string;
+  popularityProduct: number;
+  saleProduct: number;
+  colorProduct: number;
+  descProduct: string;
 }

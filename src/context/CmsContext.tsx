@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { createContext } from "react";
 import { deleteModal, alertBox } from "../utils/swal";
-import { IProduct } from "../types/servers";
+import { IProduct, IUser } from "../types/servers";
 
-type TSelectedItem = IProduct;
+type TSelectedItem = IProduct | IUser;
 
 interface CmsContextProvider {
   children: React.ReactNode;
@@ -12,8 +12,8 @@ interface CmsContextProvider {
 interface CmsContext {
   toggleMenu: boolean;
   isShowInfoModal: boolean;
-  selectedItem: IProduct | undefined;
-  showInfoModal: <T>(item: T) => void;
+  selectedItem: TSelectedItem | undefined;
+  showInfoModal: (item : (IProduct | IUser)) => void;
   setToggleMenu: React.Dispatch<React.SetStateAction<boolean>>;
   handleDeleteItem: (
     id: number,
@@ -22,7 +22,7 @@ interface CmsContext {
   closeInfoModal: () => void;
   isShowEditModal : boolean ;
   closeEditModal : ()=>void ;
-  showEditModal : (item : IProduct)=> void ;
+  showEditModal : (item : IProduct & IUser)=> void ;
   refreshData : boolean ; 
   setRefreshData : React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -56,16 +56,18 @@ export function CmsContextProvider({ children }: CmsContextProvider) {
     });
   };
 
-  function showInfoModal<T>(item: T) {
+
+  const showInfoModal = (item : TSelectedItem)=>{
     setIsShowInfoModal(true);
     setSelectedItem(item);
   }
+
   const closeInfoModal = () => setIsShowInfoModal(false);
 
 
   const closeEditModal = () => setIsShowEditModal(false);
 
-  const showEditModal = (item : IProduct) => {
+  const showEditModal = (item : IProduct & IUser) => {
     setIsShowEditModal(true)
     setSelectedItem(item)
   }

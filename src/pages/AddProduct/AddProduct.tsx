@@ -28,8 +28,6 @@ function AddProduct() {
       alertBox("خطا در افزودن محصول", "error");
       console.log(error);
     })
-
-
   }
 
   return (

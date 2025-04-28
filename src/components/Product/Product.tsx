@@ -26,7 +26,7 @@ function Product(props: IProduct) {
   const { reset, errors, handleSubmit, register } = useProductForm();
 
   useEffect(() => {
-    if (isShowEditModal && selectedItem) {
+    if (isShowEditModal && selectedItem && 'title' in selectedItem) {
       reset({
         nameProduct: selectedItem.title,
         priceProduct: selectedItem.price,
@@ -85,7 +85,7 @@ function Product(props: IProduct) {
           <ActionIcons
             onEdit={() =>  showEditModal(props)}
             onDelete={() => handleDeleteItem(Number(props.id), deleteProduct)}
-            onInfo={() => showInfoModal<IProduct>(props)}
+            onInfo={() => showInfoModal(props)}
           />
         </td>
       </tr>

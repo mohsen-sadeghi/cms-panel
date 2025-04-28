@@ -39,3 +39,17 @@ export interface IAddProductForm {
   colorProduct: number;
   descProduct: string;
 }
+
+export interface IUser {
+  firstname: string
+  lastname: string
+  username: string
+  password: string
+  phone: number
+  city: string
+  email: string
+  address: string
+  score: number
+  id: string
+}
+

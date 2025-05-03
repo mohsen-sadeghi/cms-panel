@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { createContext } from "react";
 import { deleteModal, alertBox } from "../utils/swal";
-import { IProduct, IUser } from "../types/servers";
+import { IOrder, IProduct, IUser } from "../types/servers";
 
-type TSelectedItem = IProduct | IUser;
+type TSelectedItem = IProduct & IUser & IOrder;
 
 interface CmsContextProvider {
   children: React.ReactNode;
@@ -13,7 +13,7 @@ interface CmsContext {
   toggleMenu: boolean;
   isShowInfoModal: boolean;
   selectedItem: TSelectedItem | undefined;
-  showInfoModal: (item : (IProduct | IUser)) => void;
+  showInfoModal: (item : TSelectedItem) => void;
   setToggleMenu: React.Dispatch<React.SetStateAction<boolean>>;
   handleDeleteItem: (
     id: number,
@@ -22,7 +22,7 @@ interface CmsContext {
   closeInfoModal: () => void;
   isShowEditModal : boolean ;
   closeEditModal : ()=>void ;
-  showEditModal : (item : IProduct & IUser)=> void ;
+  showEditModal : (item : TSelectedItem)=> void ;
   refreshData : boolean ; 
   setRefreshData : React.Dispatch<React.SetStateAction<boolean>>
 }

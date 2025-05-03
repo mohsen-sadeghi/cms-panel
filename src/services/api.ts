@@ -1,5 +1,6 @@
 import axios from "axios";
 import { IUser } from "../types/servers";
+import { IOrderForm } from "../types/servers";
 interface IProductForm { 
     title: string,
     price: number,
@@ -54,5 +55,20 @@ export const deleteUser = async (id : number)=>{
 
 export const editUserHandle = async (id : string , product : IUser )=>{
     const {data} = await client.put(`users/${id}` , product)
+    return data
+}
+
+export const getAllOrder = async (page ?: string)=>{
+    const {data} = await client(`orders?_page=${page}&_per_page=3`)
+    return data
+}
+
+export const deleteOrder = async (id : number)=>{
+    const {data} = await client.delete(`orders/${id}`)
+    return data
+}
+
+export const editOrderHandle = async (id : string , product : IOrderForm) => {
+    const {data} = await client.put(`orders/${id}` , product)
     return data
 }

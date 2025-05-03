@@ -53,3 +53,24 @@ export interface IUser {
   id: string
 }
 
+
+export interface IOrder {
+  id: string
+  name: string
+  location: string
+  count: number
+  title: string
+  src: string
+  price: number
+  userName: string
+  status: "success" | "pending" | "cancel"
+}
+
+export interface IOrderForm {
+  nameOrder: string
+  locationOrder: string
+  countOrder: number
+  statusOrder: "success" | "pending" | "cancel"
+}
+
+

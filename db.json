@@ -169,15 +169,6 @@
   ],
   "users": [
     {
-      "firstname": "علی",
-      "lastname": "احمدی",
-      "username": "alireza_ahmdi19",
-      "password": "19901432",
-      "phone": 9129872314,
-      "city": "تهران",
-      "email": "alireza@gmail.com",
-      "address": "تهران - خیابان فلان - کوچه فلان",
-      "score": 98,
       "id": "1"
     },
     {
@@ -308,47 +299,39 @@
   "orders": [
     {
       "id": "1",
-      "name": "alireza",
-      "location": "مشهد سرافرازان",
-      "count": 3,
-      "title": "لپ تاپ asus",
-      "src": "/img/oil.jpeg",
-      "price": 42000000,
-      "userName": "sanaz.asadi",
-      "status": "pending"
+      "name": "asd",
+      "location": "asasdsdasdd",
+      "count": 2,
+      "status": "success"
     },
     {
-      "id": "2",
       "name": "hasan",
       "location": "تهران ولنجک",
       "count": 4,
-      "title": "لپ تاپ asus",
-      "src": "/img/oil.jpeg",
-      "price": 42000000,
-      "userName": "sanaz.asadi",
-      "status": "pending"
+      "status": "cancel",
+      "id": "2"
     },
     {
       "id": "3",
+      "title": "صابون گلنار",
+      "src": "/src/assets/img/headphone.jpeg",
+      "price": 42000,
+      "userName": "sanaz.asadi",
       "name": "reza",
       "location": "مشهد قاسم آباد",
       "count": 350,
-      "title": "صابون گلنار",
-      "src": "/img/oil.jpeg",
-      "price": 42000,
-      "userName": "sanaz.asadi",
       "status": "success"
     },
     {
       "id": "4",
+      "title": "روغن اویلا",
+      "src": "/src/assets/img/headphone.jpeg",
+      "price": 97000,
+      "userName": "sanaz.asadi",
       "name": "ali",
       "location": "مشهد هاشمیه",
       "count": 3,
-      "title": "روغن اویلا",
-      "src": "/img/oil.jpeg",
-      "price": 97000,
-      "userName": "sanaz.asadi",
-      "status": "cancel"
+      "status": "success"
     },
     {
       "id": "5",
@@ -356,7 +339,7 @@
       "location": "مشهد سجاد",
       "count": 3,
       "title": "لپ تاپ dell",
-      "src": "/img/oil.jpeg",
+      "src": "/src/assets/img/headphone.jpeg",
       "price": 47000000,
       "userName": "sanaz.asadi",
       "status": "success"

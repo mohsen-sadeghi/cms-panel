@@ -3,7 +3,7 @@ import { createContext } from "react";
 import { deleteModal, alertBox } from "../utils/swal";
 import { IOrder, IProduct, IUser } from "../types/servers";
 
-type TSelectedItem = IProduct & IUser & IOrder;
+type TSelectedItem = IProduct | IUser | IOrder;
 
 interface CmsContextProvider {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ interface CmsContext {
   showInfoModal: (item : TSelectedItem) => void;
   setToggleMenu: React.Dispatch<React.SetStateAction<boolean>>;
   handleDeleteItem: (
-    id: number,
+    id: string,
     callDeleteApi: (id: number) => Promise<any>
   ) => void;
   closeInfoModal: () => void;
@@ -41,16 +41,16 @@ export function CmsContextProvider({ children }: CmsContextProvider) {
   const [refreshData , setRefreshData] = useState<boolean>(false)
 
   const handleDeleteItem = (
-    id: number,
-    callDeleteApi: (id: number) => Promise<any>
+    id: string,
+    callDeleteApi: (id: string) => Promise<any>
   ) => {
     deleteModal("آیا از حذف مطمعن هستید ؟؟", () => {
       callDeleteApi(id)
-        .then((data) => {
+        .then(() => {
           alertBox("محصول با موفقیت حذف شد", "success");
           setRefreshData(prevData => !prevData)
         })
-        .catch((error) => {
+        .catch(() => {
           alertBox(`محصول حذف نشد`, "error");
         });
     });
@@ -84,7 +84,7 @@ export function CmsContextProvider({ children }: CmsContextProvider) {
         showInfoModal,
         isShowEditModal , 
         closeEditModal , 
-        showEditModal , 
+        showEditModal ,
         refreshData , 
         setRefreshData
       }}

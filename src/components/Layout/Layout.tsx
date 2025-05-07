@@ -1,12 +1,24 @@
 import Sidebar from "../Sidebar/Sidebar";
 import Header from "../Header/Header";
 import { CmsContextProvider } from "../../context/CmsContext";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 interface Layout {
   children: React.ReactNode;
 }
 
 function Layout({ children }: Layout) {
+  const navigate = useNavigate()
+
+  useEffect(() =>{
+    const token = JSON.parse(localStorage.getItem("token"))
+    if(!token){
+      navigate('/login')
+    }
+  } , [])
+
+
   return (
     <CmsContextProvider>
         <Sidebar />

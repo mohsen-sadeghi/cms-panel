@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import ActionIcons from "../ActionIcons/ActionIcons";
 import { IProduct } from "../../types/servers";
@@ -26,7 +26,7 @@ function Product(props: IProduct) {
   const { reset, errors, handleSubmit, register } = useProductForm();
 
   useEffect(() => {
-    if (isShowEditModal && selectedItem && 'title' in selectedItem) {
+    if (isShowEditModal && selectedItem && 'popularity' in selectedItem) {
       reset({
         nameProduct: selectedItem.title,
         priceProduct: selectedItem.price,
@@ -84,7 +84,7 @@ function Product(props: IProduct) {
         <td className="flex gap-x-2 mr-2 md:mr-16 lg:mr-40 xl:mr-60">
           <ActionIcons
             onEdit={() =>  showEditModal(props)}
-            onDelete={() => handleDeleteItem(Number(props.id), deleteProduct)}
+            onDelete={() => handleDeleteItem(props.id , deleteProduct)}
             onInfo={() => showInfoModal(props)}
           />
         </td>

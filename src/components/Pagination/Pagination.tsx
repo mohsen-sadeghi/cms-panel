@@ -20,8 +20,10 @@ function Pagination({perPage , fetchText , url} : IPagination) {
     try{
       const res = await fetch(`${fetchText}`)
       const data = await res.json()
+      console.log(data);
       if (!res.ok) throw new Error("There was a problem sending the request");
       setPaginateNumber(Math.ceil(data.length / perPage))
+      console.log(paginateNumber);
     }catch(error){
       console.log("Error" , error);
     }
@@ -29,7 +31,7 @@ function Pagination({perPage , fetchText , url} : IPagination) {
 
 
   return (
-    <ul className=" flex items-center justify-center gap-x-2 mt-4 text-lg font-bold">
+    <ul className=" flex items-center justify-center gap-x-2 mt-4 mb-1 text-lg font-bold">
       {paginateNumber > 1 && Array.from({ length: paginateNumber }, (_, i) => (
         <li key={i}>
           <Link

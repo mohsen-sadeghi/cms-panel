@@ -14,7 +14,8 @@ function Orders() {
 
   useEffect(() => {
     getAllOrder(page).then((res) => {
-      setAllOrder(res.data);
+      setAllOrder(res);
+      console.log(res);
     });
   }, [refreshData, page]);
 
@@ -29,7 +30,7 @@ function Orders() {
 
       <Pagination
         perPage={3}
-        fetchText="http://localhost:3000/orders"
+        fetchText="https://quiver-cute-block.glitch.me/orders"
         url={"/orders/"}
       />
     </section>

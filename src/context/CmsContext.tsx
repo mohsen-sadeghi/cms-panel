@@ -17,7 +17,7 @@ interface CmsContext {
   setToggleMenu: React.Dispatch<React.SetStateAction<boolean>>;
   handleDeleteItem: (
     id: string,
-    callDeleteApi: (id: number) => Promise<any>
+    callDeleteApi: (id: string) => Promise<any>
   ) => void;
   closeInfoModal: () => void;
   isShowEditModal : boolean ;
@@ -67,7 +67,7 @@ export function CmsContextProvider({ children }: CmsContextProvider) {
 
   const closeEditModal = () => setIsShowEditModal(false);
 
-  const showEditModal = (item : IProduct & IUser) => {
+  const showEditModal = (item : TSelectedItem) => {
     setIsShowEditModal(true)
     setSelectedItem(item)
   }

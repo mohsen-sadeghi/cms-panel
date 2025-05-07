@@ -112,7 +112,7 @@ function Sidebar() {
                   variant="Bold"
                 />
               </NavLink>
-              <NavLink to={"/comments"} className="sidebar-links">
+              {/* <NavLink to={"/comments"} className="sidebar-links">
                 <div className="flex items-center gap-x-[7px]">
                   <Messages3 size="24" className=" sidebar-links__right-svg" />
                   <span className="sidebar-links__text">کامنت ها</span>
@@ -134,7 +134,7 @@ function Sidebar() {
                   className="sidebar-links__left-svg"
                   variant="Bold"
                 />
-              </NavLink>
+              </NavLink> */}
             </ul>
           </div>
           {/* logout */}

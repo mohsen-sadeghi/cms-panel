@@ -11,10 +11,17 @@ import {
   Logout,
 } from "iconsax-reactjs";
 import { useCmsContext } from "../../context/CmsContext";
+import { useNavigate } from "react-router";
 
 function Sidebar() {
-
+  const navigate = useNavigate()
   const {toggleMenu} = useCmsContext()
+
+
+  const logout = ()=>{
+    localStorage.removeItem("token")
+    navigate("/login")
+  }
 
 
   return (
@@ -132,7 +139,7 @@ function Sidebar() {
           </div>
           {/* logout */}
           <div className="absolute bottom-[25px] left-0 right-0 ml-auto mr-auto  gap-x-1">
-            <div className="flex items-center justify-center gap-x-1">
+            <div className="flex items-center justify-center gap-x-1" onClick={logout}>
               <Logout className="w-[25px] h-[25px] stroke-rose-50 dark:stroke-neutral-800" />
               <a href="#" className="">
                 خروج از حساب

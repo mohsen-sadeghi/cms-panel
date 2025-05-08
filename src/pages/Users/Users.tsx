@@ -14,7 +14,7 @@ function Users() {
 
   useEffect(() => {
     getAllUsers(page).then(res => {
-      setAllUser(res)
+      setAllUser(res.data)
     })
   } , [refreshData , page])
 
@@ -35,7 +35,7 @@ function Users() {
         </div>
         <Pagination
           perPage={5}
-          fetchText={"https://quiver-cute-block.glitch.me/users"}
+          fetchText={"http://localhost:3000/users"}
           url={"/users/"}
         />
       </section>

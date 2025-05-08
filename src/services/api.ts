@@ -15,7 +15,7 @@ interface IProductForm {
 
 
 const client = axios.create({
-    baseURL : "https://quiver-cute-block.glitch.me/"
+    baseURL : "http://localhost:3000/"
 })
 
 export const getChartData = async () => {
@@ -24,7 +24,7 @@ export const getChartData = async () => {
 }
 
 export const getAllProducts = async (page ?: string) => {
-    const {data} = await client(`products?_page=${page}&_limit=7`)
+    const {data} = await client(`products?_page=${page}&_per_page=7`)
     return data
 }
 
@@ -45,7 +45,7 @@ export const addProduct = async (newProduct)=> {
 
 
 export const getAllUsers = async (page ?: string)=>{
-    const {data} = await client(`users?_page=${page}&_limit=5`)
+    const {data} = await client(`users?_page=${page}&_per_page=5`)
     return data
 }
 
@@ -60,7 +60,7 @@ export const editUserHandle = async (id : string , product : IUser )=>{
 }
 
 export const getAllOrder = async (page ?: string)=>{
-    const {data} = await client(`orders?_page=${page}&_limit=3`)
+    const {data} = await client(`orders?_page=${page}&_per_page=3`)
     return data
 }
 

@@ -20,10 +20,8 @@ function Pagination({perPage , fetchText , url} : IPagination) {
     try{
       const res = await fetch(`${fetchText}`)
       const data = await res.json()
-      console.log(data);
       if (!res.ok) throw new Error("There was a problem sending the request");
       setPaginateNumber(Math.ceil(data.length / perPage))
-      console.log(paginateNumber);
     }catch(error){
       console.log("Error" , error);
     }

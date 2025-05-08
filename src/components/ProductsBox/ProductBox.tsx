@@ -13,7 +13,7 @@ function ProductBox() {
 
   useEffect(() => {
     getAllProducts(page).then((res) => {
-      setProducts(res);
+      setProducts(res.data);
     });
   }, [refreshData, page]);
 
@@ -30,7 +30,7 @@ function ProductBox() {
       </div>
 
       <Pagination
-        fetchText="https://quiver-cute-block.glitch.me/products"
+        fetchText="http://localhost:3000/products"
         perPage={7}
         url={"/products/"}
       />

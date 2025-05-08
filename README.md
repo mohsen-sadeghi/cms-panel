@@ -1,54 +1,64 @@
-# React + TypeScript + Vite
+# 🧩 CMS Panel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight and modern content management dashboard built with **React**, **TypeScript**, and **Vite**. This project utilizes **Tailwind CSS** for styling and **react-hook-form** with **Zod** for robust form validation.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📦 Product management: Add, edit, and delete products
+- 🧾 Form validation with react-hook-form & Zod
+- 💬 User-friendly alerts using SweetAlert2
+- ⚡️ Fast development with Vite and HMR
+- 🎨 Styled with Tailwind CSS
+- 🗂️ Organized file structure for scalability
 
-## Expanding the ESLint configuration
+## 📸 Screenshot
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![CMS Panel Screenshot](./src/assets/img/screenshot.jpg)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+> Ensure that the `screenshot.png` image is placed in the `public` directory of your project.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- Node.js (v16 or later)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/mohsen-sadeghi/cms-panel.git
+   cd cms-panel```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn install```
+
+3. start json server :
+   ```bash
+   npx json-server db.json
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev```
+
+The application will be available at http://localhost:5173.
+
+## 📦 Built With
+
+- [React](https://reactjs.org/) – A JavaScript library for building user interfaces
+- [TypeScript](https://www.typescriptlang.org/) – Strongly typed programming language that builds on JavaScript
+- [Vite](https://vitejs.dev/) – Next generation frontend tooling
+- [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework for rapid UI development
+- [react-hook-form](https://react-hook-form.com/) – Performant, flexible and extensible forms with easy-to-use validation
+- [Zod](https://zod.dev/) – TypeScript-first schema declaration and validation library
+- [SweetAlert2](https://sweetalert2.github.io/) – Beautiful, responsive, customizable, accessible (WAI-ARIA) replacement for JavaScript’s popup boxes
